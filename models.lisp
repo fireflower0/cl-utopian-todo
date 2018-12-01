@@ -1,8 +1,10 @@
 (defpackage :cl-utopian-todo/models
-  (:use :cl)
+  (:use :cl
+        :sxql)
   (:import-from :mito)
   (:export :create-todo-table
-           :insert-todo-table))
+           :insert-todo-table
+           :get-tasks))
 (in-package :cl-utopian-todo/models)
 
 (defparameter *db-path* (asdf:system-relative-pathname :cl-utopian-todo #P"db/todo.db"))
@@ -22,3 +24,9 @@
 (defun insert-todo-table (data)
   (with-connection (dbi:connect :sqlite3 :database-name *db-path*)
     (mito:create-dao 'tasks :name data)))
+
+(defun get-tasks ()
+  (let (ret)
+    (with-connection (dbi:connect :sqlite3 :database-name *db-path*)
+      (setf ret (mito:select-dao 'tasks)))
+    ret))

@@ -11,5 +11,6 @@
 
                ;; DB
                "mito"
+               "sxql"
 
                "cl-utopian-todo/app"))
