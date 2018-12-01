@@ -5,5 +5,13 @@
   :license ""
   :depends-on ("clack"
                "utopian"
+
+               ;; HTML Template
                "djula"
+
+               ;; DB
+               "cl-dbi"
+               "datafly"
+               "sxql"
+
                "cl-utopian-todo/app"))
