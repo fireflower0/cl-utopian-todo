@@ -10,8 +10,6 @@
                "djula"
 
                ;; DB
-               "cl-dbi"
-               "datafly"
-               "sxql"
+               "mito"
 
                "cl-utopian-todo/app"))
