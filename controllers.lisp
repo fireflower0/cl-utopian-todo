@@ -10,6 +10,11 @@
   (declare (ignore params))
   (djula-render #P"index.html" `(:tasks ,(get-tasks))))
 
+(defun render-todo-add (param)
+  (let ((name (cdr (assoc "name" param :test #'string=))))
+    (insert-todo-table name)
+    (djula-render #P"index.html" `(:tasks ,(get-tasks)))))
+
 (defroutes *routes*
     ((:GET "/" #'render-todo-list)
-     (:POST "/task-add" #'render-todo-list)))
+     (:POST "/task-add" #'render-todo-add)))
