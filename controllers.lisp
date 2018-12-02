@@ -6,7 +6,7 @@
   (:export :*routes*))
 (in-package :cl-utopian-todo/controllers)
 
-(defun render-todo-list (param)
+(defun index (param)
   (declare (ignore params))
   (djula-render #P"index.html" `(:tasks ,(get-tasks))))
 
@@ -16,5 +16,5 @@
     (djula-render #P"index.html" `(:tasks ,(get-tasks)))))
 
 (defroutes *routes*
-    ((:GET "/" #'render-todo-list)
+    ((:GET "/" #'index)
      (:POST "/task-add" #'render-todo-add)))

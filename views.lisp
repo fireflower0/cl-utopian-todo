@@ -1,5 +1,6 @@
 (defpackage :cl-utopian-todo/views
   (:use :cl
+        :cl-utopian-todo/config
         :cl-utopian-todo/models)
   (:import-from :djula
                 :add-template-directory
@@ -7,9 +8,6 @@
                 :render-template*)
   (:export :djula-render))
 (in-package :cl-utopian-todo/views)
-
-(defparameter *app-root* (asdf:system-source-directory :cl-utopian-todo))
-(defparameter *tmp-dir*  (merge-pathnames #P"template/" *app-root*))
 
 (djula:add-template-directory *tmp-dir*)
 

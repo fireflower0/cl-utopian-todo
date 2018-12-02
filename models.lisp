@@ -18,8 +18,7 @@
   (with-connection (dbi:connect :sqlite3 :database-name *db-path*)
     (mito:deftable tasks ()
       ((name :col-type :text)))
-    (mito:execute-sql (first (mito:table-definition `tasks)))
-    (mito:ensure-table-exists `tasks)))
+    (mito:execute-sql (first (mito:table-definition `tasks)))))
 
 (defun insert-todo-table (data)
   (with-connection (dbi:connect :sqlite3 :database-name *db-path*)

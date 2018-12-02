@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Utopian Template{% endblock %}
 {% block content %}
+<h1>Utopian Todo App</h1>
 <div id="main">
   <form action="/task-add" method="post">
     <input type="text" name="name" value="{{ tasks.name }}">
@@ -8,7 +9,9 @@
   </form>
   <ul>
     {% for task in tasks %}
-    <li>{{ task.name }}</li>
+    <aside class="note-wrap note-white">
+      <li>{{ task.name }}</li>
+    </aside>
     {% endfor %}
   </ul>
 </div>
