@@ -1,7 +1,6 @@
 (defpackage :cl-utopian-todo/views
   (:use :cl
-        :cl-utopian-todo/config
-        :cl-utopian-todo/models)
+        :cl-utopian-todo/config)
   (:import-from :djula
                 :add-template-directory
                 :compile-template*
