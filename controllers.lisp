@@ -8,7 +8,7 @@
 
 (defun index (param)
   (declare (ignore params))
-  (djula-render #P"index.html" `(:tasks ,(get-tasks))))
+  (djula-render #P"index.html"))
 
 (defun render-todo-add (param)
   (let ((name (cdr (assoc "name" param :test #'string=))))

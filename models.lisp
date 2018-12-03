@@ -1,13 +1,12 @@
 (defpackage :cl-utopian-todo/models
   (:use :cl
-        :sxql)
+        :sxql
+        :cl-utopian-todo/config)
   (:import-from :mito)
   (:export :create-todo-table
            :insert-todo-table
            :get-tasks))
 (in-package :cl-utopian-todo/models)
-
-(defparameter *db-path* (asdf:system-relative-pathname :cl-utopian-todo #P"db/todo.db"))
 
 (defmacro with-connection (conn &body body)
   `(let ((mito:*connection* ,conn))
