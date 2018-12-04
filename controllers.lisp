@@ -6,6 +6,9 @@
   (:export :*routes*))
 (in-package :cl-utopian-todo/controllers)
 
+;;;
+;; Routing Function
+
 (defun index (param)
   (declare (ignore params))
   (djula-render #P"index.html"))
@@ -14,6 +17,9 @@
   (let ((name (cdr (assoc "name" param :test #'string=))))
     (insert-todo-table name)
     (djula-render #P"index.html" `(:tasks ,(get-tasks)))))
+
+;;;
+;; Definition route
 
 (defroutes *routes*
     ((:GET "/" #'index)

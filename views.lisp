@@ -12,6 +12,9 @@
 
 (defparameter *template-reg* (make-hash-table :test 'equal))
 
+;;;
+;; Rendering
+
 (defun djula-render (template-path &optional env)
   (let ((template (gethash template-path *template-reg*)))
     (unless template
