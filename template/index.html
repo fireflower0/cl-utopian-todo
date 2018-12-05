@@ -2,17 +2,20 @@
 {% block title %}Utopian Template{% endblock %}
 {% block content %}
 <h1>Utopian Todo App</h1>
-<div id="main">
-  <form action="/task-add" method="post">
-    <input type="text" name="name" value="{{ tasks.name }}">
-    <input type="submit" value="追加">
-  </form>
-  <ul>
-    {% for task in tasks %}
-    <aside class="note-wrap note-white">
-      <li>{{ task.name }}</li>
-    </aside>
-    {% endfor %}
-  </ul>
-</div>
+<form action="/task-add" method="post">
+  <input type="text" name="name" value="{{ tasks.name }}">
+  <input type="submit" value="追加">
+</form>
+<ul style="list-style: none; padding-left: 0;">
+  {% for task in tasks %}
+  <aside class="note-wrap note-white">
+    <li>{{ task.name }}</li>
+    <br><br>
+    <form action="/task-del" method="post">
+      <input type="hidden" name="id" value="{{ task.id }}">
+      <button type="submit" class="close">&times;</button>
+    </form>
+  </aside>
+  {% endfor %}
+</ul>
 {% endblock %}

@@ -13,14 +13,20 @@
   (declare (ignore params))
   (djula-render #P"index.html"))
 
-(defun render-todo-add (param)
+(defun index-add (param)
   (let ((name (cdr (assoc "name" param :test #'string=))))
-    (insert-todo-table name)
-    (djula-render #P"index.html" `(:tasks ,(get-tasks)))))
+    (insert-task name)
+    (djula-render #P"index.html" `(:tasks ,(select-all)))))
+
+(defun index-del (param)
+  (let ((id (cdr (assoc "id" param :test #'string=))))
+    (delete-task id)
+    (djula-render #P"index.html" `(:tasks ,(select-all)))))
 
 ;;;
 ;; Definition route
 
 (defroutes *routes*
     ((:GET "/" #'index)
-     (:POST "/task-add" #'render-todo-add)))
+     (:POST "/task-add" #'index-add)
+     (:POST "/task-del" #'index-del)))

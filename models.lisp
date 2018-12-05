@@ -3,9 +3,10 @@
         :sxql
         :cl-utopian-todo/config)
   (:import-from :mito)
-  (:export :create-todo-table
-           :insert-todo-table
-           :get-tasks))
+  (:export :create-table
+           :insert-task
+           :delete-task
+           :select-all))
 (in-package :cl-utopian-todo/models)
 
 ;;;
@@ -24,17 +25,21 @@
 ;;;
 ;; DB Function
 
-(defun create-todo-table ()
+(defun create-table ()
   (with-connection (db)
     (mito:deftable tasks ()
       ((name :col-type :text)))
     (mito:execute-sql (first (mito:table-definition `tasks)))))
 
-(defun insert-todo-table (data)
+(defun insert-task (data)
   (with-connection (db)
     (mito:create-dao 'tasks :name data)))
 
-(defun get-tasks ()
+(defun delete-task (id)
+  (with-connection (db)
+    (mito:delete-by-values 'tasks :id id)))
+
+(defun select-all ()
   (let (ret)
     (with-connection (db)
       (setf ret (mito:select-dao 'tasks)))
