@@ -4,7 +4,8 @@
                 :config-env-var
                 :defconfig)
   (:export :config
-           :*tmp-dir*))
+           :*tmp-dir*
+           :*static-dir*))
 (in-package :cl-utopian-todo/config)
 
 (setf (config-env-var) "APP_ENV")
@@ -12,8 +13,9 @@
 ;;;
 ;; File & Directory Path
 
-(defparameter *app-root* (asdf:system-source-directory :cl-utopian-todo))
-(defparameter *tmp-dir*  (merge-pathnames #P"template/" *app-root*))
+(defparameter *app-root*   (asdf:system-source-directory :cl-utopian-todo))
+(defparameter *tmp-dir*    (merge-pathnames #P"template/" *app-root*))
+(defparameter *static-dir* (merge-pathnames #P"static/" *app-root*))
 
 ;;;
 ;; DB Config

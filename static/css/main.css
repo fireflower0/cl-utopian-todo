@@ -1,0 +1,12 @@
+.close{
+    width:165px;
+    font-size:24px;
+    font-weight:bold;
+    text-decoration:none;
+    display:block;
+    text-align:center;
+    padding:8px 0 10px;
+    color:#333;
+    border:0px solid #333;
+    border-radius:5px;
+}
